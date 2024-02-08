@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport"
+        content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label>Type:</label>
+        <input id="type" />
+        <button onclick="search()">Search</button>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="searchResult">
+             <script>
+                let ducks = [
+                    { id: 1, type: "Mallard" },
+                    { id: 2, type: "Redhead" },
+                    { id: 3, type: "Decoy" },
+                    { id: 4, type: "Redhead" },
+                    { id: 5, type: "Redhead" },
+                    { id: 6, type: "Mallard" },
+                ];
+
+               function search() {
+                    let duckType = document.getElementById("type").value.toLowerCase(); // Convert input to lowercase
+                    let table = document.getElementById("searchResult");
+                    table.innerHTML = ""; // Clear previous results
+                    for (let duck of ducks) {
+                        if (!duckType || duck.type.toLowerCase() === duckType) { // Convert duck type to lowercase
+                            let row = document.createElement("tr");
+
+                            // Create the ID cell
+                            let cellId = document.createElement("td");
+                            let textId = document.createTextNode(duck.id);
+                            cellId.appendChild(textId);
+                            row.appendChild(cellId);
+
+                            // Create the Type cell
+                            let cellType = document.createElement("td");
+                            let textType = document.createTextNode(duck.type);
+                            cellType.appendChild(textType);
+                            row.appendChild(cellType);
+
+                            // Append the row to the table
+                            table.appendChild(row);
+                        }
+                    }
+                }
+            </script>
+               
+            </tbody>
+        </table>
+    </body>
+</html>
+    
+
